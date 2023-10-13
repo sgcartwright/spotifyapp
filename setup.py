@@ -8,10 +8,6 @@ requires = [
     'html5lib',
     'requests',
     'requests_html',
-    'beautifulsoup4',
-    'youtube_dl',
-    'pathlib',
-    'pandas',
     'gunicorn',
 ]
 
@@ -20,7 +16,7 @@ setup(
     version='1.0',
     description='An application that creates Spotify Playlist Radios',
     author='Steven Cartwright',
-    author_email='stevencartwright',
+    author_email='stevencartwright@ufl.edu',
     keywords='web flask',
     packages=find_packages(),
     include_package_data=True,
