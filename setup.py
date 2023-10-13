@@ -11,7 +11,8 @@ requires = [
     'beautifulsoup4',
     'youtube_dl',
     'pathlib',
-    'pandas'
+    'pandas',
+    'gunicorn'
 ]
 
 setup(
