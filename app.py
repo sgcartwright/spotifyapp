@@ -2,6 +2,8 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from flask import Flask, url_for, session, request, redirect, render_template
 import time
+from selenium import webdriver
+import requests
 
 app = Flask(__name__)
 
@@ -68,6 +70,10 @@ def get_playlist_tracks(playlist_choice, playlist_length):
 
     sp = spotipy.Spotify(auth=get_token()['access_token'])
 
+    if(playlist_choice[0:12] != "https://open"): # Edit url if hyperlinks are used
+        response = requests.head(playlist_choice, allow_redirects=True)
+        playlist_choice = response.url
+
     # Extract the playlist ID from the URL
     start_index = playlist_choice.find("/playlist/") + len("/playlist/")
     end_index = playlist_choice.find("?", start_index)
@@ -130,8 +136,6 @@ def tracks_to_playlist(playlist_length, playlist_name):
     # Trim 'ids' list if it's longer than the desired playlist length
     if len(ids) < playlist_length:
         ids = ids[:playlist_length]
-    else:
-        print("shorter)")
 
     sp = spotipy.Spotify(auth=get_token()['access_token'])
 

@@ -12,7 +12,7 @@ requires = [
     'youtube_dl',
     'pathlib',
     'pandas',
-    'gunicorn'
+    'gunicorn',
 ]
 
 setup(
