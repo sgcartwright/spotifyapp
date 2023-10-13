@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Playlist Radio Generator</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Playlist Radio Generator</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/privacy">Privacy Policy</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename='spotify.png') }}" alt="Spotify logo" width="250" height="250">
+                <h1>Spotify Playlist Radio Generator</h1>
+                <script>
+                    // Function to retrieve the message parameter from the URL
+                    function getParameterByName(name, url) {
+                        if (!url) url = window.location.href;
+                        name = name.replace(/[\[\]]/g, "\\$&");
+                        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                            results = regex.exec(url);
+                        if (!results) return null;
+                        if (!results[2]) return '';
+                        return decodeURIComponent(results[2].replace(/\+/g, " "));
+                    }
+
+                    // Function to display a success message
+                    function displaySuccessMessage() {
+                        var message = getParameterByName('message');
+                        if (message) {
+                            alert(message);
+                        }
+                    }
+
+                    // Call the function when the page loads
+                    window.onload = displaySuccessMessage;
+                </script>
+                {% if message %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <form method="POST" action="/home">
+                    <div class="form-group">
+                        <label for="input1">Enter playlist link:</label>
+                        <input type="text" class="form-control" name="input1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for "input2">Enter playlist name:</label>
+                        <input type="text" class="form-control" name="input2" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="input3">Enter playlist length:</label>
+                        <input type="number" class="form-control" name="input3" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Generate Playlist</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Add Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
