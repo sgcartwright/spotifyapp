@@ -60,6 +60,7 @@ Future improvements and features may include:
 - Adding option for genre radios
 - Adding option for playlists based on recent listening
 - Creating public webpage
+- Avoid songs unavailable in US
 
 ## Setup
 
