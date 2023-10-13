@@ -1,6 +1,5 @@
 # Setup program to ensure all proper packages are installed
 
-
 from setuptools import setup, find_packages
 
 requires = [
@@ -13,6 +12,7 @@ requires = [
     'youtube_dl',
     'pathlib',
     'pandas'
+    'guincorn'
 ]
 
 setup(
