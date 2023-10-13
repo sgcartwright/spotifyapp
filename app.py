@@ -256,7 +256,7 @@ def make_playlist_csv():
     global url_error
 
     get_playlist_tracks(playlist_choice, playlist_length)
-    if(url_error == True):
+    if(url_error):
         return redirect('/home?message=Invalid+playlist+URL.')
     tracks_to_playlist(playlist_length, playlist_name)
     return redirect('/home?message=Playlist+created+successfully!')
