@@ -279,5 +279,7 @@ def privacy():
     return render_template('privacy.html')
 
 if __name__ == '__main__': # Run app
-    app.run(debug=True)
+    app.run(debug=False)
+
+
 
