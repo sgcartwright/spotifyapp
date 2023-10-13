@@ -12,7 +12,6 @@ requires = [
     'youtube_dl',
     'pathlib',
     'pandas'
-    'guincorn'
 ]
 
 setup(
